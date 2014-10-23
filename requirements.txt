@@ -1,0 +1,7 @@
+backports.ssl-match-hostname==3.4.0.2
+beautifulsoup4==4.3.2
+httplib2==0.9
+nflgame==1.2.7
+pytz==2014.4
+willie==4.4.1
+wsgiref==0.1.2
