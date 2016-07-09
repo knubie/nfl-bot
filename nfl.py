@@ -50,6 +50,7 @@ def play(bot, trigger):
     current_play = list(reversed(list(game.drives.plays().sort("gameclock", descending=True))))[0].__str__()
     if current_play != last_play:
       last_play = current_play
+      # https://cdn.secure.espn.go.com/combiner/i?img=/i/teamlogos/nfl/500/scoreboard/PIT.png&w=56&h=56
       formatted = re.sub("\((\w+), ", r"http://i.nflcdn.com/static/site/6.0/img/teams/\1/\1_logo-20x20.gif **", last_play)
       formatted = formatted.replace(")", "** -", 1)
       formatted = re.sub("\((\d{1,2}:\d{1,2})\)", r"*\1* - ", formatted)
