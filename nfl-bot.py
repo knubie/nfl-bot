@@ -10,13 +10,13 @@ import json
 
 play_by_play_loop = False
 loop = None
-index = 45
+index = 0
 prev_desc = ""
 year = 2016
-week = 3
-home = 'BAL'
-away = 'DET'
-season = 'PRE'
+week = 1
+home = 'WAS'
+away = 'PIT'
+season = 'REG'
 
 ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n/10%10!=1)*(n%10<4)*n%10::4])
 
@@ -87,9 +87,9 @@ def say_play(message):
     # desc = list(reversed(list(game.drives.plays())))[0].__str__()
 
     # if game.has_started
-    # play = list(reversed(list(game.drives.plays())))[0]
+    play = list(reversed(list(game.drives.plays())))[0]
     # else
-    play = list(game.drives.plays())[index]
+    # play = list(game.drives.plays())[index]
     desc = play.desc
 
     print(desc)
@@ -221,10 +221,10 @@ def say_play(message):
 
             if penalty != None:
                 attachment['color'] = '#F2D300'
-                part = re.sub("([^A-Z])([A-Z]{3})([^A-Z])", lambda m: m.group(1) + ':' + m.group(2).lower() + ': ', part, 1)
+                part = re.sub("([^A-Z])([A-Z]{2,3})([^A-Z])", lambda m: m.group(1) + ':' + m.group(2).lower() + ': ', part, 1)
 
             if recovered != None:
-                part = re.sub("([^A-Z])([A-Z]{3})(-)", lambda m: m.group(1) + ':' + m.group(2).lower() + ': ', part, 1)
+                part = re.sub("([^A-Z])([A-Z]{2,3})(-)", lambda m: m.group(1) + ':' + m.group(2).lower() + ': ', part, 1)
 
             if injured != None:
                 attachment['color'] = '#B4161D'
